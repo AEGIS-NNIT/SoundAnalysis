@@ -31,7 +31,6 @@ def main():
     plt.axis([n0, n0+N, -1.0, 1.0])
     plt.xlabel("Time [sample]")
     plt.ylabel("Amplitude")
-    plt.savefig("Test_FFT_WAVE.png")
 
     # 振幅スペクトルを描画
     plt.subplot(312)
@@ -39,7 +38,6 @@ def main():
     plt.axis([0, fs/2, 0, 15])
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Amplitude spectrum")
-    plt.savefig("Test_FFT_AS.png")
 
     # 位相スペクトルを描画
     plt.subplot(313)
@@ -47,7 +45,7 @@ def main():
     plt.axis([0, fs/2, -np.pi, np.pi])
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Phase spectrum")
-    plt.savefig("Test_FFT_PS.png")
+    plt.savefig("Test_FFT.png")
 
 if __name__ == '__main__':
     main()
