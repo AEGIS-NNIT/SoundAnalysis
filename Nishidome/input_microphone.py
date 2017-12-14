@@ -25,7 +25,7 @@ if __name__=="__main__":
 	py_format=p_in.get_format_from_width(2)
 	fs=44100
 	channels=1
-	chunk=1024
+	chunk=2**13
 	use_device_index=2
 
 	in_stream=p_in.open(format=py_format, channels=channels, rate=fs, input=True, frames_per_buffer=chunk, input_device_index=use_device_index, stream_callback=callback)
