@@ -41,6 +41,6 @@ else:
 	in_stream.stop_stream()
 	in_stream.close()
 
-sf.write("pyaudio_output_200mm.wav",xs,fs)
+sf.write("pyaudio_output.wav",xs,fs)
 
 p_in.terminate()
