@@ -23,7 +23,7 @@ def callback(in_data, frame_count, time_info, status):
 if __name__=="__main__":
 	p_in=pa.PyAudio()
 	py_format=p_in.get_format_from_width(2)
-	fs=44100
+	fs=16000
 	channels=1
 	chunk=2**13
 	use_device_index=2
