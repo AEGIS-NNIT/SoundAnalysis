@@ -14,7 +14,7 @@ def dft (n0, N, g):
     return G
 
 def main():
-    wf = wave.open("pyaudio_output.wav" , "r" )
+    wf = wave.open("test.wav" , "r" )
     fs = wf.getframerate()                          # サンプリング周波数
     g = wf.readframes(wf.getnframes())
     g = np.frombuffer(g, dtype= "int16")/32768.0    # -1～1に正規化
@@ -46,6 +46,8 @@ def main():
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Phase spectrum")
     plt.savefig("Test_FFT.png")
+    
+    
 
 if __name__ == '__main__':
     main()
