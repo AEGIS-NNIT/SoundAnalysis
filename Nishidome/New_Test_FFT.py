@@ -12,8 +12,10 @@ import soundfile as sf
 if __name__ == '__main__':
     plt.close("all")
 
+    filename=wave.open()
+
     # wavファイル読み込み
-    filename = sys.argv[1]
+    "./pyaudio_output.wav" = sys.argv[1]
     wav, fs = sf.read("pyaudio_output.wav")
 
     # ステレオ2chの場合、LchとRchに分割
