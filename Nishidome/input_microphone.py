@@ -53,6 +53,6 @@ if __name__ == "__main__":
         in_stream.close()
 
     # 入力信号を保存
-    sf.write("./pyaudio_output_50mm.wav", xs, fs)
+    sf.write("./pyaudio_output_100mm.wav", xs, fs)
 
     p_in.terminate()
