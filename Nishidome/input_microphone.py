@@ -44,7 +44,7 @@ if __name__ == "__main__":
     # input loop
     # 何か入力したら終了
     while in_stream.is_active():
-        c = raw_input()
+        c = input()
         if c:
             break
         time.sleep(0.1)
