@@ -14,7 +14,7 @@ def dft (n0, N, g):
     return G
 
 def main():
-    wf = wave.open("pyaudio_output_100mm.wav" , "r" )
+    wf = wave.open("pyaudio_output_200mm.wav" , "r" )
     fs = wf.getframerate()                          # サンプリング周波数
     g = wf.readframes(wf.getnframes())
     g = np.frombuffer(g, dtype= "int16")/32768.0    # -1～1に正規化
