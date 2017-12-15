@@ -17,7 +17,7 @@ def main():
     wf = wave.open("pyaudio_output_200mm.wav" , "r" )
     fs = wf.getframerate()                          # サンプリング周波数
     g = wf.readframes(wf.getnframes())
-    g = np.frombuffer(g, dtype= "int16")/32768.0    # -1～1に正規化
+    g = np.frombuffer(g, dtype= "int16")    # -1～1に正規化
     wf.close()
     n0 = 0                                          # サンプリング開始位置
     N = 256                                         # サンプル数
@@ -28,7 +28,7 @@ def main():
     # 波形サンプルを描画
     plt.subplot(311)
     plt.plot(range(n0, n0+N), g[n0:n0+N])
-    plt.axis([n0, n0+N, -1.0, 1.0])
+    plt.axis([n0, n0+N, -50, 50])
     plt.xlabel("Time [sample]")
     plt.ylabel("Amplitude")
 
