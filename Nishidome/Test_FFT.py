@@ -17,7 +17,7 @@ def main():
     wf = wave.open("pyaudio_output_200mm.wav" , "r" )
     fs = wf.getframerate()                          # サンプリング周波数
     g = wf.readframes(wf.getnframes())
-    g = np.frombuffer(g, dtype= "int16")    # -1～1に正規化
+    g = np.frombuffer(g, dtype= "int16")/32768.0    # -1～1に正規化
     wf.close()
     n0 = 0                                          # サンプリング開始位置
     N = 256                                         # サンプル数
