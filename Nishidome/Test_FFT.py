@@ -28,7 +28,7 @@ def main():
     # 波形サンプルを描画
     plt.subplot(311)
     plt.plot(range(n0, n0+N), g[n0:n0+N])
-    plt.axis([n0, n0+N, -50, 50])
+    plt.axis([n0, n0+N, -1.0, 1.0])
     plt.xlabel("Time [sample]")
     plt.ylabel("Amplitude")
 
