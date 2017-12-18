@@ -8,13 +8,14 @@ import soundfile as sf
 import pyaudio as pa
 
 
-# global
-xs = np.array([])
+xs = np.array([])   #変数をnumpy arrayオブジェクトで指定
 
 
 def callback(in_data, frame_count, time_info, status):
     global xs
     in_float = np.frombuffer(in_data, dtype=np.int16).astype(np.float)
+    #in_dataを読み込み、16bit整数に変換して返す
+    #float型の
     in_float[in_float > 0.0] /= float(2**15 - 1)
     in_float[in_float <= 0.0] /= float(2**15)
     xs = np.r_[xs, in_float]
