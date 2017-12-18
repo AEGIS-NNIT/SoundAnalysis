@@ -10,6 +10,8 @@ def main():
     data = np.frombuffer(buf, dtype="int16")    #バイナリデータを16bit整数に変換
                                                 #bufのデータを高速に読み込んで1次元配列に格納
     plt.plot(data)                              #描画
+    plt.xlabel("Time(プロット数)")
+    plt.ylabel("Amplitude()")
     plt.savefig("Wave_200mm.png")               #グラフ保存
 
 if __name__ == '__main__':
