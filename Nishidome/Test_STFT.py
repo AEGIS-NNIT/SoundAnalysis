@@ -54,7 +54,7 @@ def main():
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Amplitude spectrum")
 
-    # スペクトルを描画（窓関数あり）
+    # 振幅スペクトルを描画（窓関数あり）
     plt.subplot(224)
     plt.plot(f_list, amp2, marker='o', linestyle='-')
     plt.axis([0, fs/2, 0, 15])
