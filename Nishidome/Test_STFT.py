@@ -14,7 +14,7 @@ def dft (n0, N, g):
     return G
 
 def main():
-    wf = wave.open("sine.wav" , "r" )
+    wf = wave.open("planing.wav" , "r" )
     fs = wf.getframerate()                          # サンプリング周波数
     g = wf.readframes(wf.getnframes())
     g = np.frombuffer(g, dtype= "int16")/32768.0    # -1～1に正規化
@@ -54,13 +54,13 @@ def main():
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Amplitude spectrum")
 
-    # 位相スペクトルを描画（窓関数あり）
+    # スペクトルを描画（窓関数あり）
     plt.subplot(224)
     plt.plot(f_list, amp2, marker='o', linestyle='-')
     plt.axis([0, fs/2, 0, 15])
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Amplitude spectrum")
-    plt.show()
+    plt.savefig("Test_STFT_planing.png")
 
 if __name__ == '__main__':
     main()
