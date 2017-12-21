@@ -14,7 +14,7 @@ def dft (n0, N, g):
     return G
 
 def main():
-    wf = wave.open("planing.wav" , "r" )
+    wf = wave.open("planing_idling.wav" , "r" )
     fs = wf.getframerate()                          # サンプリング周波数
     g = wf.readframes(wf.getnframes())
     g = np.frombuffer(g, dtype= "int16")/32768.0    # -1～1に正規化
@@ -60,7 +60,7 @@ def main():
     plt.axis([0, fs/2, 0, 15])
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Amplitude spectrum")
-    plt.savefig("Test_STFT_planing.png")
+    plt.savefig("Test_STFT_planing_idling.png")
 
 if __name__ == '__main__':
     main()
