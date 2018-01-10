@@ -28,17 +28,18 @@ if __name__ == "__main__":
     py_format = p_in.get_format_from_width(2)
     fs = 16000
     channels = 1
-    chunk = 1024
+    chunk = 1024    #音源から1回読み込むときのデータサイズ(個数)。1024(=2の10乗)とする場合が多い。
+    #データの書き込みに必要な(録音に掛かる)時間は、chunk/fs=0.064sec
     use_device_index = 2
 
     # 入力ストリームを作成
-    in_stream = p_in.open(format=py_format,
-                          channels=channels,
-                          rate=fs,
+    in_stream = p_in.open(format=py_format,     #サンプリングサイズとフォーマット
+                          channels=channels,    #チャンネル数
+                          rate=fs,              #サンプルレート
                           input=True,
-                          frames_per_buffer=chunk,
-                          input_device_index=use_device_index,
-                          stream_callback=callback)
+                          frames_per_buffer=chunk,  #バッファごとのフレーム数(バイナリデータの個数)を指定、ここでは1024フレーム
+                          input_device_index=use_device_index,  #使用する入力デバイスのインデックスを指定
+                          stream_callback=callback)　#コールバック操作のコールバック関数を指定
 
     in_stream.start_stream()
 
