@@ -2,7 +2,7 @@
 import wave
 
 def main():
-    wf = wave.open("planing_idling.wav" , "r" )
+    wf = wave.open("pyaudio_output_10mm.wav" , "r" )
     print"Frames:", wf.getnframes()
 
 if __name__ == '__main__':
