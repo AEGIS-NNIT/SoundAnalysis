@@ -3,7 +3,7 @@ import wave
 
 def main():
     wf = wave.open("planing.wav" , "r" )
-    print"Time[s]:", float(wf.getnframes()) / wf.getframerate()
+    print"Frames:", float(wf.getnframes())
 
 if __name__ == '__main__':
     main()
