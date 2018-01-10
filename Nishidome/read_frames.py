@@ -2,7 +2,7 @@
 import wave
 
 def main():
-    wf = wave.open("pyaudio_output_100mm.wav" , "r" )
+    wf = wave.open("pyaudio_output_200mm.wav" , "r" )
     print"Frames:", wf.getnframes()
 
 if __name__ == '__main__':
