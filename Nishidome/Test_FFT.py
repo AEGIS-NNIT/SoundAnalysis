@@ -26,26 +26,26 @@ def main():
     phase = [np.arctan2(int(c.imag), int(c.real)) for c in G]   # 位相スペクトル
     flist = np.fft.fftfreq(N, d=1.0/fs)             # 周波数リスト
     # 波形サンプルを描画
-    plt.subplot(311)
-    plt.plot(range(n0, n0+N), g[n0:n0+N])
-    plt.axis([n0, n0+N, -1.0, 1.0])
-    plt.xlabel("Time [sample]")
-    plt.ylabel("Amplitude")
+    #plt.subplot(311)
+    #plt.plot(range(n0, n0+N), g[n0:n0+N])
+    #plt.axis([n0, n0+N, -1.0, 1.0])
+    #plt.xlabel("Time [sample]")
+    #plt.ylabel("Amplitude")
 
     # 振幅スペクトルを描画
-    plt.subplot(312)
+    #plt.subplot(312)
     plt.plot(flist, amp, marker='o', linestyle='-')
     plt.axis([0, fs/2, 0, 15])
     plt.xlabel("Frequency [Hz]")
     plt.ylabel("Amplitude spectrum")
 
     # 位相スペクトルを描画
-    plt.subplot(313)
-    plt.plot(flist, phase, marker='o', linestyle='-')
-    plt.axis([0, fs/2, -np.pi, np.pi])
-    plt.xlabel("Frequency [Hz]")
-    plt.ylabel("Phase spectrum")
-    plt.savefig("Test_FFT_planing_idling.png")
+    #plt.subplot(313)
+    #plt.plot(flist, phase, marker='o', linestyle='-')
+    #plt.axis([0, fs/2, -np.pi, np.pi])
+    #plt.xlabel("Frequency [Hz]")
+    #plt.ylabel("Phase spectrum")
+    plt.savefig("Test_FFT_10mm.png")
     
     
 
