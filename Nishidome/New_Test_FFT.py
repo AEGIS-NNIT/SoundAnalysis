@@ -1,70 +1,47 @@
-#!/usr/bin/env python
-# vim:fileencoding=utf-8
-
-import sys
-
+#coding:utf-8
+import wave
 import numpy as np
-import scipy.fftpack as fft
-import matplotlib.pyplot as plt
+import scipy.fftpack
+from pylab import *
 
-import soundfile as sf
+if __name__ == "__main__" :
+    wf = wave.open("pyaudio_output_10mm.wav" , "r" )
+    fs = wf.getframerate()  # サンプリング周波数
+    x = wf.readframes(wf.getnframes())
+    x = frombuffer(x, dtype= "int16") / 32768.0  # -1 - +1に正規化
+    wf.close()
 
-if __name__ == '__main__':
-    plt.close("all")
+    start = 0  # サンプリングする開始位置
+    N = 256    # FFTのサンプル数
 
-    filename=wave.open()
+    X = np.fft.fft(x[start:start+N])  # FFT
+#    X = scipy.fftpack.fft(x[start:start+N])         # scipy版
 
-    # wavファイル読み込み
-    "./pyaudio_output.wav" = sys.argv[1]
-    wav, fs = sf.read("pyaudio_output.wav")
+    freqList = np.fft.fftfreq(N, d=1.0/fs)  # 周波数軸の値を計算
+#    freqList = scipy.fftpack.fftfreq(N, d=1.0/ fs)  # scipy版
 
-    # ステレオ2chの場合、LchとRchに分割
-    wav_l = wav[:, 0]
-    wav_r = wav[:, 1]
+    amplitudeSpectrum = [np.sqrt(c.real ** 2 + c.imag ** 2) for c in X]  # 振幅スペクトル
+    phaseSpectrum = [np.arctan2(int(c.imag), int(c.real)) for c in X]    # 位相スペクトル
 
-    # 入力をモノラル化
-    xs = (0.5 * wav_l) + (0.5 * wav_r)
+    # 波形を描画
+    subplot(311)  # 3行1列のグラフの1番目の位置にプロット
+    plot(range(start, start+N), x[start:start+N])
+    axis([start, start+N, -1.0, 1.0])
+    xlabel("time [sample]")
+    ylabel("amplitude")
 
-    n_len = len(xs)
-    n_fft = 128
-    n_overlap = 2
-    n_shift = n_fft / n_overlap
+    # 振幅スペクトルを描画
+    subplot(312)
+    plot(freqList, amplitudeSpectrum, marker= 'o', linestyle='-')
+    axis([0, fs/2, 0, 50])
+    xlabel("frequency [Hz]")
+    ylabel("amplitude spectrum")
 
-    # 中間バッファ
-    zs = np.zeros(n_len)
-    Zs = np.zeros(n_fft)
+    # 位相スペクトルを描画
+    subplot(313)
+    plot(freqList, phaseSpectrum, marker= 'o', linestyle='-')
+    axis([0, fs/2, -np.pi, np.pi])
+    xlabel("frequency [Hz]")
+    ylabel("phase spectrum")
 
-    # 出力バッファ
-    ys = np.zeros(n_len)
-
-    # 窓関数
-    window = np.hanning(n_fft)
-
-    # FFT & IFFT
-    for start in range(0, n_len - n_shift, n_shift):
-        xs_cut = xs[start: start + n_fft]
-        xs_win = xs_cut * window
-        Xs = fft.fft(xs_win, n_fft)
-
-        # some signal processing
-        Zs = Xs
-        zs = fft.ifft(Zs, n_fft)
-
-        # write output buffer
-        ys[start: start + n_fft] += np.real(zs)
-
-    # 冒頭から10秒分プロット
-    fig = plt.figure(1, figsize=(8, 10))
-    ax = fig.add_subplot(211)
-    ax.plot(xs[:fs*10])
-    ax.set_title("input signal")
-    ax.set_xlabel("time [pt]")
-    ax.set_ylabel("amplitude")
-
-    ax = fig.add_subplot(212)
-    ax.plot(ys[:fs*10])
-    ax.set_title("output signal")
-    ax.set_xlabel("time [pt]")
-    ax.set_ylabel("amplitude")
-
-    plt.savefig("New_Test_FFT.png")
+    plt.savefig("New_Test_FFT_10mm.png")
