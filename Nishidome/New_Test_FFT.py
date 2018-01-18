@@ -5,7 +5,7 @@ import scipy.fftpack
 from pylab import *
 
 if __name__ == "__main__" :
-    wf = wave.open("pyaudio_output_10mm.wav" , "r" )
+    wf = wave.open("planing.wav" , "r" )
     fs = wf.getframerate()  # サンプリング周波数
     x = wf.readframes(wf.getnframes())
     x = frombuffer(x, dtype= "int16") / 32768.0  # -1 - +1に正規化
@@ -44,4 +44,4 @@ if __name__ == "__main__" :
     xlabel("frequency [Hz]")
     ylabel("phase spectrum")
 
-    plt.savefig("New_Test_FFT_10mm.png")
+    plt.savefig("New_Test_FFT_planing.png")
