@@ -15,11 +15,11 @@ if __name__ == "__main__" :
     start = 0  # サンプリングする開始位置
     N = 256    # FFTのサンプル数
 
-    X = np.fft.fft(x[start:start+N])  # FFT
-#    X = scipy.fftpack.fft(x[start:start+N])         # scipy版
+#    X = np.fft.fft(x[start:start+N])  # FFT
+    X = scipy.fftpack.fft(x[start:start+N])         # scipy版
 
-    freqList = np.fft.fftfreq(N, d=1.0/fs)  # 周波数軸の値を計算
-#    freqList = scipy.fftpack.fftfreq(N, d=1.0/ fs)  # scipy版
+#    freqList = np.fft.fftfreq(N, d=1.0/fs)  # 周波数軸の値を計算
+    freqList = scipy.fftpack.fftfreq(N, d=1.0/ fs)  # scipy版
 
     amplitudeSpectrum = [np.sqrt(c.real ** 2 + c.imag ** 2) for c in X]  # 振幅スペクトル
     phaseSpectrum = [np.arctan2(int(c.imag), int(c.real)) for c in X]    # 位相スペクトル
