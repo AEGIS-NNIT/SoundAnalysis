@@ -13,7 +13,7 @@ if __name__ == "__main__" :
     wf.close()
 
     start = 0  # サンプリングする開始位置
-    N = 256    # FFTのサンプル数
+    N = 351232    # FFTのサンプル数
 
 #    X = np.fft.fft(x[start:start+N])  # FFT
     X = scipy.fftpack.fft(x[start:start+N])         # scipy版
@@ -27,7 +27,7 @@ if __name__ == "__main__" :
     # 波形を描画
     subplot(311)  # 3行1列のグラフの1番目の位置にプロット
     plt.plot(x) #plot(range(start, start+N), x[start:start+N])
-    #axis([start, start+N, -1.0, 1.0])
+    axis([start, start+N, -1.0, 1.0])
     xlabel("time [sample]")
     ylabel("amplitude")
 
