@@ -46,3 +46,5 @@ if __name__ == "__main__" :
     ylabel("phase spectrum")
 
     plt.savefig("New_Test_FFT_10mm.png")
+    
+    #http://aidiary.hatenablog.com/entry/20110618/1308367728
