@@ -34,7 +34,7 @@ if __name__ == "__main__" :
     # 振幅スペクトルを描画
     subplot(312)
     plot(freqList, amplitudeSpectrum, marker= 'o', linestyle='-')
-    axis([0, fs/2, 0, 50])
+    axis([0, fs/2, 0, 20000])
     xlabel("frequency [Hz]")
     ylabel("amplitude spectrum")
 
