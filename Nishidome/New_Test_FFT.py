@@ -5,10 +5,10 @@ import scipy.fftpack
 from pylab import *
 
 if __name__ == "__main__" :
-    wf = wave.open("planing.wav" , "r" )
+    wf = wave.open("pyaudio_output_10mm.wav" , "r" )
     fs = wf.getframerate()  # サンプリング周波数
     x = wf.readframes(wf.getnframes())
-    x = frombuffer(x, dtype= "int16") / 32768.0  # -1 - +1に正規化
+    x = np.frombuffer(x, dtype= "int16")# / 32768.0  # -1 - +1に正規化
     wf.close()
 
     start = 0  # サンプリングする開始位置
@@ -25,8 +25,8 @@ if __name__ == "__main__" :
 
     # 波形を描画
     subplot(311)  # 3行1列のグラフの1番目の位置にプロット
-    plot(range(start, start+N), x[start:start+N])
-    axis([start, start+N, -1.0, 1.0])
+    plt.plot(x) #plot(range(start, start+N), x[start:start+N])
+    #axis([start, start+N, -1.0, 1.0])
     xlabel("time [sample]")
     ylabel("amplitude")
 
@@ -44,4 +44,4 @@ if __name__ == "__main__" :
     xlabel("frequency [Hz]")
     ylabel("phase spectrum")
 
-    plt.savefig("New_Test_FFT_planing.png")
+    plt.savefig("New_Test_FFT_10mm.png")
