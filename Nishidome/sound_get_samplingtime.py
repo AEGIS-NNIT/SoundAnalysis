@@ -3,8 +3,8 @@
 import wave
 
 def main():
-	wf=wave.open("pyaudio_output.wav","r")
-	print ('Frame rate:',wf.getframerate())
+	wf=wave.open("pyaudio_output_10mm.wav","r")
+	print ('Sample Width:',wf.getsampwidth())
 
 if __name__=='__main__':
 	main()
