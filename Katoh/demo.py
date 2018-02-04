@@ -25,7 +25,6 @@ Amp = [np.sqrt(c.real ** 2 + c.imag ** 2)/LENGTH for c in X]
 maxfreq = np.where(Amp == max(Amp))
 peakfreq = maxfreq[0][0]
 print(freqList[peakfreq])
-# print(maxfreq)
 
 plt.figure(figsize = (16,9), dpi=100)
 
@@ -37,8 +36,14 @@ plt.ylabel("amplitude")
 
 plt.subplot(212)
 plt.plot(freqList, Amp)
-# plt.axis([0, 2000, 0, 1000])
+plt.axis([0, 1000, 0, 1000])
 plt.xlabel("frequency [Hz]")
 plt.ylabel("amplitude")
 
 plt.savefig("FFT/" + sound)
+
+# m4a wav transfer
+# https://qiita.com/peroon/items/a1673913127fcdbb2338
+
+# np.where
+# https://deepage.net/features/numpy-where.html
