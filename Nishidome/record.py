@@ -5,8 +5,8 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 44100
 CHUNK=2**13
-RECORD_SECONDS = 10
-WAVE_OUTPUT_FILENAME = "output.wav"
+RECORD_SECONDS = 3
+WAVE_OUTPUT_FILENAME = "raspi.wav"
 
 audio=pyaudio.PyAudio()
 
