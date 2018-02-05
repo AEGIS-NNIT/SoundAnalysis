@@ -9,7 +9,7 @@ import wave
 import numpy as np
 # to use fft library
 import scipy.fftpack
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # threshold
 do = 261
@@ -19,7 +19,7 @@ so = 393
 sound=input()
 
 # open wav file
-wf = wave.open("data_piano/" + sound + ".wav", "r")
+wf = wave.open(sound + ".wav", "r")
 fs = wf.getframerate()
 x = wf.readframes(wf.getnframes())
 x = np.frombuffer(x, dtype= "int16")
@@ -44,7 +44,6 @@ elif(abs(peak_freq - so) < 20):
 else:
 	print("error!!!!")
 
-"""
 plt.figure(figsize = (16,9), dpi=100)
 
 plt.subplot(211)
@@ -60,7 +59,7 @@ plt.xlabel("frequency [Hz]")
 plt.ylabel("amplitude")
 
 plt.savefig("FFT/" + sound)
-"""
+
 
 # m4a wav transfer
 # https://qiita.com/peroon/items/a1673913127fcdbb2338
