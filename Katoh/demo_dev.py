@@ -88,6 +88,7 @@ print(peak_freq)
 if(abs(peak_freq - do) < 20):
 	print("do")
 	GPIO.output(pin, GPIO.HIGH)
+	sleep(2000)
 elif(abs(peak_freq - so) < 20):
 	print("so")
 	GPIO.output(pin, GPIO.HIGH)
