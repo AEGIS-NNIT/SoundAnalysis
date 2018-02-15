@@ -24,6 +24,7 @@ pin = 14
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin, GPIO.OUT)
 GPIO.output(pin, GPIO.LOW)
+beep_time = 5
 
 # threshold
 do = 261
@@ -83,68 +84,24 @@ peak_index = np.where(Amp == max(Amp))[0][0]
 peak_freq = freqList[peak_index]
 print(peak_freq)
 
+def beep(pin, beep_time, interval):
+	for i in range(0, beep_time/interval):
+	    GPIO.output(pin, GPIO.HIGH)
+	    sleep(interval)
+	    GPIO.output(pin, GPIO.LOW)
+	    sleep(interval)
+
 # judge threshold
 if(abs(peak_freq - do) < 20):
     print("do")
     GPIO.output(pin, GPIO.HIGH)
-    sleep(5)
-
+    sleep(beep_time)
 elif(abs(peak_freq - so) < 20):
     print("so")
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.5)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.5)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.5)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.5)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.5)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.5)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.5)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.5)
+    beep(pin, beep_time, 0.5)
 else:
     print("error!!!!")
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(0.1)
-    GPIO.output(pin, GPIO.LOW)
-    sleep(0.1)
+	beep(pin, beep_time, 0.1)
 
 GPIO.output(pin, GPIO.LOW)
 
