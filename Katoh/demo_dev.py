@@ -9,7 +9,6 @@ import wave
 import numpy as np
 # to use fft library
 import scipy.fftpack
-import matplotlib.pyplot as plt
 # to get datetime
 from datetime import datetime
 # to record the sound
@@ -140,22 +139,6 @@ else:
     sleep(0.1)
 
 GPIO.output(pin, GPIO.LOW)
-plt.figure(figsize = (16,9), dpi=100)
-
-plt.subplot(211)
-plt.plot(x)
-#plt.title("sound")
-plt.xlabel("time [sample]")
-plt.ylabel("amplitude")
-
-plt.subplot(212)
-plt.plot(freqList, Amp)
-plt.axis([0, 1000, 0, 1000])
-plt.xlabel("frequency [Hz]")
-plt.ylabel("amplitude")
-
-plt.savefig("FFT/" + time)
-
 
 # m4a wav transfer
 # https://qiita.com/peroon/items/a1673913127fcdbb2338
