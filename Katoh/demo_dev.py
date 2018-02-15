@@ -15,6 +15,15 @@ from datetime import datetime
 # to record the sound
 import pyaudio
 import wave
+# to use GPIO
+import RPi.GPIO as GPIO
+# to sleep
+from time import sleep
+
+# output pin
+pin = 18
+GPIO.setup(pin, GPIO.OUT)
+GPIO.output(pin, GPIO.LOW)
 
 # threshold
 do = 261
@@ -77,11 +86,53 @@ print(peak_freq)
 # judge threshold
 if(abs(peak_freq - do) < 20):
 	print("do")
+	GPIO.output(pin, GPIO.HIGH)
 elif(abs(peak_freq - so) < 20):
 	print("so")
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(1000)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(1000)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(1000)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(1000)
 else:
 	print("error!!!!")
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(100)
+	GPIO.output(pin, GPIO.LOW)
+	sleep(100)
 
+GPIO.output(pin, GPIO.LOW)
 plt.figure(figsize = (16,9), dpi=100)
 
 plt.subplot(211)
