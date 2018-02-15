@@ -21,8 +21,8 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 # output pin
-pin = 18
-GPIO.setmode(GPIO.BMC)
+pin = 14
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin, GPIO.OUT)
 GPIO.output(pin, GPIO.LOW)
 
@@ -88,7 +88,11 @@ print(peak_freq)
 if(abs(peak_freq - do) < 20):
 	print("do")
 	GPIO.output(pin, GPIO.HIGH)
+<<<<<<< HEAD
 	sleep(2000)
+=======
+        sleep(2000)
+>>>>>>> c19df916efd67a91a111df51ac9134836cbc5c40
 elif(abs(peak_freq - so) < 20):
 	print("so")
 	GPIO.output(pin, GPIO.HIGH)
