@@ -42,6 +42,13 @@ audio=pyaudio.PyAudio()
 
 stream=audio.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,input_device_index=2,frames_per_buffer=CHUNK)
 
+def beep(pin, beep_time, interval):
+	for i in range(0, int(beep_time/interval/2)):
+		GPIO.output(pin, GPIO.HIGH)
+		sleep(interval)
+		GPIO.output(pin, GPIO.LOW)
+		sleep(interval)
+
 print("* recording")
 
 frames=[]
@@ -83,13 +90,6 @@ Amp = [np.sqrt(c.real ** 2 + c.imag ** 2)/LENGTH for c in X]
 peak_index = np.where(Amp == max(Amp))[0][0]
 peak_freq = freqList[peak_index]
 print(peak_freq)
-
-def beep(pin, beep_time, interval):
-	for i in range(0, int(beep_time/interval)):
-		GPIO.output(pin, GPIO.HIGH)
-		sleep(interval)
-		GPIO.output(pin, GPIO.LOW)
-		sleep(interval)
 
 # judge threshold
 if(abs(peak_freq - do) < 20):
