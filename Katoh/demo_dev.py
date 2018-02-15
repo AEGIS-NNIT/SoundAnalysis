@@ -86,21 +86,21 @@ print(peak_freq)
 
 def beep(pin, beep_time, interval):
 	for i in range(0, beep_time/interval):
-	    GPIO.output(pin, GPIO.HIGH)
-	    sleep(interval)
-	    GPIO.output(pin, GPIO.LOW)
-	    sleep(interval)
+		GPIO.output(pin, GPIO.HIGH)
+		sleep(interval)
+		GPIO.output(pin, GPIO.LOW)
+		sleep(interval)
 
 # judge threshold
 if(abs(peak_freq - do) < 20):
-    print("do")
-    GPIO.output(pin, GPIO.HIGH)
-    sleep(beep_time)
+	print("do")
+	GPIO.output(pin, GPIO.HIGH)
+	sleep(beep_time)
 elif(abs(peak_freq - so) < 20):
-    print("so")
-    beep(pin, beep_time, 0.5)
+	print("so")
+	beep(pin, beep_time, 0.5)
 else:
-    print("error!!!!")
+	print("error!!!!")
 	beep(pin, beep_time, 0.1)
 
 GPIO.output(pin, GPIO.LOW)
