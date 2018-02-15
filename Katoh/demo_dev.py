@@ -86,7 +86,7 @@ plt.figure(figsize = (16,9), dpi=100)
 
 plt.subplot(211)
 plt.plot(x)
-plt.title(sound)
+#plt.title("sound")
 plt.xlabel("time [sample]")
 plt.ylabel("amplitude")
 
@@ -96,7 +96,7 @@ plt.axis([0, 1000, 0, 1000])
 plt.xlabel("frequency [Hz]")
 plt.ylabel("amplitude")
 
-plt.savefig("FFT/" + sound)
+plt.savefig("FFT/" + time)
 
 
 # m4a wav transfer
