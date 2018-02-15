@@ -22,7 +22,7 @@ from time import sleep
 
 # output pin
 pin = 18
-GPIO.setmode(GPIO.BMC)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(pin, GPIO.OUT)
 GPIO.output(pin, GPIO.LOW)
 
