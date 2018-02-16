@@ -32,7 +32,7 @@ so = 393
 
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
-RATE = 44100
+RATE = 11020
 CHUNK=2**13
 RECORD_SECONDS = 2
 time = datetime.now().strftime("%Y%m%d_%H:%M:%S")
