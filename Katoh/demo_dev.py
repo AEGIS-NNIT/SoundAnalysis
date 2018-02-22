@@ -27,16 +27,16 @@ GPIO.output(pin, GPIO.LOW)
 beep_time = 5
 
 # threshold
-do = 990
-so = 776
+do = 1010
+so = 780
 
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 11020
 CHUNK=2**13
 RECORD_SECONDS = 2
-time = datetime.now().strftime("%Y%m%d_%H:%M:%S")
-WAVE_OUTPUT_FILENAME = time + ".wav"
+time = datetime.now().strftime("%Y%m%d_%H.%M.%S")
+WAVE_OUTPUT_FILENAME = "wav/" + time + ".wav"
 
 audio=pyaudio.PyAudio()
 
@@ -94,12 +94,12 @@ peak_freq = freqList[peak_index]
 print(peak_freq)
 
 # judge threshold
-if(abs(peak_freq - do) < 20):
+if(abs(peak_freq - do) <40):
     print("do")
     GPIO.output(pin, GPIO.HIGH)
     print("HIGH")
     sleep(beep_time)
-elif(abs(peak_freq - so) < 20):
+elif(abs(peak_freq - so) < 40):
     print("so")
     beep(pin, beep_time, 0.5)
 else:

@@ -19,7 +19,7 @@ from time import sleep
 import csv
 
 # threshold
-do = 1015
+do = 1010
 so = 780
 
 FORMAT = pyaudio.paInt16
