@@ -27,8 +27,8 @@ GPIO.output(pin, GPIO.LOW)
 beep_time = 5
 
 # threshold
-do = 261
-so = 393
+do = 990
+so = 776
 
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
