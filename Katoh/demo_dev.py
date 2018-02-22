@@ -18,6 +18,7 @@ import wave
 import RPi.GPIO as GPIO
 # to sleep
 from time import sleep
+import matplotlib.pyplot as plt
 
 # output pin
 pin = 14
