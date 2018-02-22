@@ -113,7 +113,6 @@ plt.figure(figsize = (16,9), dpi=100)
 
 plt.subplot(211)
 plt.plot(x)
-plt.title(sound)
 plt.xlabel("time [sample]")
 plt.ylabel("amplitude")
 
