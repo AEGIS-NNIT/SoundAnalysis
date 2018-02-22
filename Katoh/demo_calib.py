@@ -19,7 +19,7 @@ from time import sleep
 import csv
 
 # threshold
-do = 990
+do = 1000
 so = 776
 
 FORMAT = pyaudio.paInt16
@@ -76,7 +76,7 @@ peak_index = np.where(Amp == max(Amp))[0][0]
 peak_freq = freqList[peak_index]
 print(peak_freq)
 
-csv.writer(open("test.csv",'ab')).writerow([peak_freq])
+csv.writer(open("test.csv",'a')).writerow([peak_freq])
 
 
 # m4a wav transfer
