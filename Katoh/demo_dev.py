@@ -27,12 +27,12 @@ GPIO.output(pin, GPIO.LOW)
 beep_time = 5
 
 # threshold
-do = 261
-so = 393
+do = 990
+so = 776
 
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
-RATE = 44100
+RATE = 11020
 CHUNK=2**13
 RECORD_SECONDS = 2
 time = datetime.now().strftime("%Y%m%d_%H:%M:%S")
