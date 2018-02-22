@@ -43,22 +43,24 @@ audio=pyaudio.PyAudio()
 stream=audio.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,input_device_index=2,frames_per_buffer=CHUNK)
 
 def beep(pin, beep_time, interval):
-	for i in range(0, int(beep_time/interval/2)):
-		GPIO.output(pin, GPIO.HIGH)
-		sleep(interval)
-		GPIO.output(pin, GPIO.LOW)
-		sleep(interval)
+    for i in range(0, int(beep_time/interval/2)):
+        GPIO.output(pin, GPIO.HIGH)
+        print("HIGH")
+        sleep(interval)
+        GPIO.output(pin, GPIO.LOW)
+        print("LOW")
+        sleep(interval)
 
 print("* recording")
 
 frames=[]
 
 for i in range(0, int(RATE/CHUNK*RECORD_SECONDS)):
-	try:
-		data=stream.read(CHUNK)
-	except IOError:
-		pass
-	frames.append(data)
+    try:
+        data=stream.read(CHUNK)
+    except IOError:
+        pass
+    frames.append(data)
 
 print("* done recording")
 
@@ -93,15 +95,16 @@ print(peak_freq)
 
 # judge threshold
 if(abs(peak_freq - do) < 20):
-	print("do")
-	GPIO.output(pin, GPIO.HIGH)
-	sleep(beep_time)
+    print("do")
+    GPIO.output(pin, GPIO.HIGH)
+    print("HIGH")
+    sleep(beep_time)
 elif(abs(peak_freq - so) < 20):
-	print("so")
-	beep(pin, beep_time, 0.5)
+    print("so")
+    beep(pin, beep_time, 0.5)
 else:
-	print("error!!!!")
-	beep(pin, beep_time, 0.1)
+    print("error!!!!")
+    beep(pin, beep_time, 0.1)
 
 GPIO.output(pin, GPIO.LOW)
 
