@@ -18,6 +18,7 @@ import wave
 import RPi.GPIO as GPIO
 # to sleep
 from time import sleep
+import csv
 
 # output pin
 pin = 14
@@ -108,6 +109,7 @@ else:
 
 GPIO.output(pin, GPIO.LOW)
 
+csv.writer(open("test.csv",'ab')).writerow([peak_freq])
 
 
 # m4a wav transfer
