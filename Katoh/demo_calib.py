@@ -28,7 +28,7 @@ RATE = 11020
 CHUNK=2**13
 RECORD_SECONDS = 2
 time = datetime.now().strftime("%Y%m%d_%H:%M:%S")
-WAVE_OUTPUT_FILENAME = time + ".wav"
+WAVE_OUTPUT_FILENAME = "wav/" + time + ".wav"
 
 audio=pyaudio.PyAudio()
 
