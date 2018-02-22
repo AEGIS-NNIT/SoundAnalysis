@@ -123,7 +123,7 @@ plt.axis([0, 1000, 0, 1000])
 plt.xlabel("frequency [Hz]")
 plt.ylabel("amplitude")
 
-plt.savefig("FFT/" + sound)
+plt.savefig(time)
 
 # m4a wav transfer
 # https://qiita.com/peroon/items/a1673913127fcdbb2338
