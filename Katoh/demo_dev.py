@@ -108,6 +108,22 @@ else:
 
 GPIO.output(pin, GPIO.LOW)
 
+plt.figure(figsize = (16,9), dpi=100)
+
+plt.subplot(211)
+plt.plot(x)
+plt.title(sound)
+plt.xlabel("time [sample]")
+plt.ylabel("amplitude")
+
+plt.subplot(212)
+plt.plot(freqList, Amp)
+plt.axis([0, 1000, 0, 1000])
+plt.xlabel("frequency [Hz]")
+plt.ylabel("amplitude")
+
+plt.savefig("FFT/" + sound)
+
 # m4a wav transfer
 # https://qiita.com/peroon/items/a1673913127fcdbb2338
 
