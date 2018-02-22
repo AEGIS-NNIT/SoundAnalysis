@@ -58,7 +58,9 @@ plt.axis([0, 1000, 0, 1000])
 plt.xlabel("frequency [Hz]")
 plt.ylabel("amplitude")
 
-plt.savefig("FFT/" + sound)
+plt.show()
+
+# plt.savefig("FFT/" + sound)
 
 
 # m4a wav transfer
