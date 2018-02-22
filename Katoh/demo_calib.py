@@ -14,18 +14,9 @@ from datetime import datetime
 # to record the sound
 import pyaudio
 import wave
-# to use GPIO
-import RPi.GPIO as GPIO
 # to sleep
 from time import sleep
 import csv
-
-# output pin
-pin = 14
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(pin, GPIO.OUT)
-GPIO.output(pin, GPIO.LOW)
-beep_time = 5
 
 # threshold
 do = 990
@@ -42,15 +33,6 @@ WAVE_OUTPUT_FILENAME = time + ".wav"
 audio=pyaudio.PyAudio()
 
 stream=audio.open(format=FORMAT,channels=CHANNELS,rate=RATE,input=True,input_device_index=2,frames_per_buffer=CHUNK)
-
-def beep(pin, beep_time, interval):
-    for i in range(0, int(beep_time/interval/2)):
-        GPIO.output(pin, GPIO.HIGH)
-        print("HIGH")
-        sleep(interval)
-        GPIO.output(pin, GPIO.LOW)
-        print("LOW")
-        sleep(interval)
 
 print("* recording")
 
@@ -93,21 +75,6 @@ Amp = [np.sqrt(c.real ** 2 + c.imag ** 2)/LENGTH for c in X]
 peak_index = np.where(Amp == max(Amp))[0][0]
 peak_freq = freqList[peak_index]
 print(peak_freq)
-
-# judge threshold
-if(abs(peak_freq - do) < 20):
-    print("do")
-    GPIO.output(pin, GPIO.HIGH)
-    print("HIGH")
-    sleep(beep_time)
-elif(abs(peak_freq - so) < 20):
-    print("so")
-    beep(pin, beep_time, 0.5)
-else:
-    print("error!!!!")
-    beep(pin, beep_time, 0.1)
-
-GPIO.output(pin, GPIO.LOW)
 
 csv.writer(open("test.csv",'ab')).writerow([peak_freq])
 
