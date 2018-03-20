@@ -33,14 +33,14 @@ peak_freq = freqList[peak_index]
 print(peak_freq)
 
 # judge threshold
-if(abs(peak_freq - do) < 20):
-	print("do")
-elif(abs(peak_freq - so) < 20):
-	print("so")
-else:
-	print("error!!!!")
+#if(abs(peak_freq - do) < 20):
+#	print("do")
+#elif(abs(peak_freq - so) < 20):
+#	print("so")
+#else:
+#	print("error!!!!")
 
-plt.figure(figsize = (16,9), dpi=100)
+#plt.figure(figsize = (16,9), dpi=100)
 
 plt.subplot(211)
 plt.plot(x)
@@ -54,7 +54,7 @@ plt.axis([0, 1000, 0, 1000])
 plt.xlabel("frequency [Hz]")
 plt.ylabel("amplitude")
 
-plt.savefig("FFT/" + sound)
+plt.savefig("Printer_100mm.png")
 
 
 # m4a wav transfer
