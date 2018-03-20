@@ -44,7 +44,7 @@ print(peak_freq)
 
 plt.subplot(211)
 plt.plot(x)
-plt.title(sound)
+plt.title("sound_amplitude")
 plt.xlabel("time [sample]")
 plt.ylabel("amplitude")
 
